@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editoriales{% endblock %}
+
+{% block body %}
+    <h1>Editoriales</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for editorial in editorials %}
+            <tr>
+                <td>{{ editorial.id }}</td>
+                <td>{{ editorial.nombre }}</td>
+                <td>
+                    <a class="btn btn-primary"href="{{ path('app_editorial_show', {'id': editorial.id}) }}">Detalles</a>
+                    <a class="btn btn-primary"href="{{ path('app_editorial_edit', {'id': editorial.id}) }}">Editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Registron no encontrados</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('app_editorial_new') }}">Crear nueva</a>
+{% endblock %}
